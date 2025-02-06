@@ -1,10 +1,11 @@
 import React from 'react';
 import  { useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { MDBInput } from 'mdb-react-ui-kit';
 import { addEventAPI} from '../Services/AllApi';
 function AddEvent() {
   const {id} = useParams()
+  const navigate = useNavigate()
   const [events,setEvents] = useState({
     eventname:"",
     description:"",
@@ -27,6 +28,7 @@ function AddEvent() {
        console.log(response.data)
        if(response.status===200){
         alert("event added successfully")
+        navigate('/viewUserList')
        }
       }
       catch(error){
